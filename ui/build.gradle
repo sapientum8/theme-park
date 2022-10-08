@@ -1,0 +1,9 @@
+plugins {
+    id 'java-library'
+    id 'com.gradlehero.filediff' version '0.1'
+}
+
+filediff {
+    file1 = file('src/main/resources/static/images/teacups.jpg')
+    file2 = file('src/main/resources/static/images/logflume.jpg')
+}

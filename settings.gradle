@@ -1,0 +1,9 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenLocal()
+    }
+}
+
+rootProject.name = 'theme-park-manager'
+include 'api','service','ui'

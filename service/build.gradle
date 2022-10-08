@@ -1,0 +1,26 @@
+plugins {
+    id 'java-library'
+    id 'com.gradlehero.themepark-conventions'
+}
+
+dependencies {
+    implementation "org.mapstruct:mapstruct:${mapstructVersion}"
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
+    testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
+    testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+}
+
+tasks.register('runJar', JavaExec) {
+    classpath tasks.named('jar').map { it.outputs }
+    classpath configurations.runtimeClasspath
+    args 'teacups'
+    mainClass = 'com.gradlehero.themepark.RideStatusService'
+}
+
+tasks.named('jar') {
+    manifest {
+        attributes('Main-Class': 'com.gradlehero.themepark.RideStatusService', 'Manifest-Version': '1.1')
+    }
+}
